@@ -1,0 +1,15 @@
+{
+  "pdfplumber": "0.11.10",
+  "sha256": "4f0ae6e017b0e97de211da8fd97316e55bd927af5740d6ce95e1b7b1539f9407",
+  "baseline_rows": 17,
+  "jurisdictions": 55,
+  "columns": 25,
+  "csv_rows_including_header_and_total": 57,
+  "row_sum_checks": 55,
+  "column_sum_checks": 24,
+  "visual_numeric_spot_checks": 13,
+  "grand_total": 2236457,
+  "blank_cells_preserved": true,
+  "status": "passed",
+  "scope": "One upstream sample; not a held-out or A/B evaluation."
+}

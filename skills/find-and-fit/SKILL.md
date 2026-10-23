@@ -35,6 +35,8 @@ Deliver a short comparison with source links, one recommended next action, and t
 
 When implementation is authorized, preserve the upstream baseline, inspect contribution instructions, reproduce the missing behavior, make the narrow change and run the same test before/after. For an upstream PR, search existing issues/PRs first. Discovery alone does not authorize installation, account creation, publishing or submitting a PR. Existing user authorization carries forward; do not ask for it again.
 
+Before calling a tool verified, reopen its output and compare it with the input contract. For structured extraction, check record boundaries, field names, missing values and source-derived samples; a successful exit or a CSV extension is insufficient. Upstream demonstration files are useful smoke tests, but label them as such rather than held-out evaluations. If an installed skill already covers the task, record that reuse decision instead of crediting this skill with discovering a new capability.
+
 ## Output
 
 Use the user's language. Include: constraints; up to three candidates with evidence and unknowns; use/adapt/tool/no-match decision; minimal change and acceptance test; what was actually tested. Report network/rate-limit failures as unavailable evidence, not as an empty search result. Do not claim this skill has empirically beaten another finder without a controlled comparison.
