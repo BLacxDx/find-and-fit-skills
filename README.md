@@ -1,70 +1,87 @@
 # Find and Fit Skills
 
-**先找现成的，再只改你需要的。** 一个帮助 AI 为真实需求寻找、检查和适配现有 Skill / 开源工具的轻量 Skill。
+**Find an existing tool. Check the fit. Adapt only the gap.**
 
-Find existing agent skills, check them against your constraints, and adapt only the missing piece.
+[中文介绍](README.zh-CN.md)
 
-## 为什么做这个
+Find and Fit is an agent skill that helps an AI assistant turn a real requirement into a usable tool choice. It searches for existing skills and open-source tools, checks their source and runtime requirements, and proposes the smallest adaptation for unmet needs.
 
-搜索到一个热门仓库，不代表它能在你的电脑上解决问题。本项目把发现候选和验证适配分开：读取实际 SKILL.md，记录版本与证据，检查平台、离线要求、费用、许可证，然后给出「直接用 / 少量适配 / 独立工具 / 没有合适候选」的结论。
+## What it does
 
-适合这样问：
+- Extracts constraints such as Windows support, offline use, cost and output format.
+- Searches available sources, with a bundled read-only GitHub helper as a fallback.
+- Reads actual source evidence and records commit-pinned links and unknowns.
+- Distinguishes an installable skill from a standalone library or CLI.
+- Verifies package identity, runtime dependencies and actual output before calling a recommendation successful.
 
-- “帮我找一个在 Windows 上离线转写日语录音的 Skill，没有 GPU。”
-- “找能批量提取 PDF 表格的工具，扫描件也要处理，先别安装。”
-- “我想把已有 Skill 改成适合自己的工作流程，先检查哪些能力已经具备。”
+It can also conclude that an installed capability already suffices or that no suitable match was established.
 
-## 安装到 Codex
+## A complete example
 
-需要 Git；可选辅助脚本需要 Python 3.10+，仅用标准库，无 pip 依赖、无 API 付费要求。搜索公开 GitHub 需要联网。Skill 的推理依赖你使用的 AI 客户端及其额度。
+**Request:** Convert a public English EPUB into chapter Markdown, in reading order, without a paid API.
+
+The workflow searched GitHub and the web, inspected three candidates, rejected a Windows setup mismatch, and selected npm `epub2md`. The default output included navigation and publisher pages, so a small adapter used the tool's public API to produce 12 chapter files. An independent ZIP/XML-based verifier matched 27,336 normalized word tokens, chapter titles and order against the source EPUB. Deliberately missing text and swapped chapter order were detected.
+
+[Read the discovery-to-execution report and reproduce it](examples/epub-to-markdown/README.md).
+
+This is one assistant-run case, not an independent A/B evaluation or proof of general improvement. The book was external to the tool, but the adapter was developed and verified on that same book.
+
+## Install in Codex
+
+Copy `skills/find-and-fit` into your Codex skills directory, normally `~/.codex/skills/` (or the `skills` directory under your configured CODEX_HOME). Do not overwrite an existing customized copy without comparing it.
 
 ```text
 git clone https://github.com/BLacxDx/find-and-fit-skills.git
 ```
 
-将 `skills/find-and-fit` 文件夹复制到 Codex 的 skills 目录（默认 `~/.codex/skills/`；配置了 CODEX_HOME 时用其 `skills/` 子目录）。Windows PowerShell 默认目录示例：
+Windows PowerShell, using the default skills directory:
 
 ```powershell
 Copy-Item -Recurse ./find-and-fit-skills/skills/find-and-fit "$env:USERPROFILE/.codex/skills/"
 ```
 
-已有同名目录时先比较，避免覆盖自己的修改。新会话中输入：
+In a new conversation:
 
 ```text
-用 $find-and-fit 找一个满足以下要求的 Skill：Windows、无需付费 API、批量处理 PDF。先比较，不安装。
+Use $find-and-fit to find a tool for converting EPUBs into chapter Markdown on Windows. No paid API. Compare candidates, run the best fit, and verify the result against the source.
 ```
 
-Skill 保持默认自动发现；实际是否触发由宿主决定，也可以显式调用。其他支持 SKILL.md 的客户端可按其安装方式使用；目前没有逐个验证。
+Automatic selection is permitted; actual routing depends on the host. Other SKILL.md-compatible clients have not been individually tested.
 
-## 单独使用搜索助手
+## Standalone discovery helper
 
-在仓库根目录运行：
+Python 3.10+, standard library only. Run from the repository root:
 
 ```text
-python skills/find-and-fit/scripts/discover.py search "pdf translation skill in:readme" --limit 3
-python skills/find-and-fit/scripts/discover.py inspect vercel-labs/skills --skill-path skills/find-skills/SKILL.md
+python skills/find-and-fit/scripts/discover.py search "epub markdown in:name,description" --limit 5
+python skills/find-and-fit/scripts/discover.py inspect uxiew/epub2MD
 ```
 
-输出 JSON 包括检索时间、仓库信息、许可证元数据、SKILL.md 路径和固定到提交的文件链接。默认最多读取三个 Skill 和一个根目录 README；大文件跳过，截断/未读取情况明确列出。源码作为 `untrusted_content` 返回，脚本不执行候选内容，不安装软件，不创建 PR。
+The helper returns public GitHub metadata, license metadata, skill paths, commit-pinned file links and untrusted source text. It does not install or execute candidates. It reads at most three skills and one root README per inspection; oversized files and incomplete trees are reported.
 
-GitHub 仓库搜索不是完整的 Skill 索引；中文关键词可能漏检，AI 应结合英文检索或可用的网页/注册表搜索。请求超时或限流时返回非零退出码，不能当作「没有结果」。脚本不读取本机凭证，使用匿名公开 API；频繁使用会触发限流。不要把私人资料放进查询词。
+Repository search is not a complete skill index and may return irrelevant results. The assistant must check conversion direction and constraints. Anonymous GitHub API requests can be rate-limited; errors are not empty results. Never include private data in public search queries. Tool discovery requires a network connection; execution requirements depend on the selected tool.
 
-## 与现有方案的关系
-
-[Vercel find-skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills) 已经提供发现与安装流程，本项目不声称首创 Skill 搜索。这里的重点是用户约束、提交固定的源码证据、未知项和最小适配测试；可搭配已有发现工具使用，而非替代它们。
-
-目前是小型首版：没有完整安全审计能力、自动语义排名、安装器或自动改写器。适配实现由宿主 AI 在用户授权范围内完成。没有受控实验能证明它比不启用 Skill 更好，也不保证任何资助申请资格。
-
-## 验证和贡献
+## Validation
 
 ```text
 python -m unittest discover -s tests -v
 ```
 
-完整的 [PDF 转 CSV 适配案例](examples/pdf-table/README.md) 记录了默认提取的合并行问题、最小修复与输出核验。它使用上游示例，不是独立对照评测。
+- Six helper regression tests and Skill format validation passed.
+- [Initial live search and repository checks](examples/validation.md).
+- [PDF table adaptation](examples/pdf-table/README.md): reuse of an existing skill's tool, not discovery proof.
+- [EPUB search-to-execution case](examples/epub-to-markdown/README.md): three candidates, one executed package, one narrow adaptation and source-based output checks.
 
-六个离线回归测试覆盖检索不完整、未知许可证、提交固定、内容不执行、下载大小、参数和缺失文件。真实仓库检查见 [验证记录](examples/validation.md)。这些是功能冒烟测试，不是独立会话的能力提升评测。
+Example dependencies are separate from the dependency-free discovery helper. Detailed limitations are recorded in each report.
 
-欢迎提交带输入、预期行为、实际结果的 issue。改代码时运行上述测试；新增搜索源请保持只读、可限制请求量，并保留证据来源和失败信息。
+## Related work and scope
 
-MIT License。代码与文档使用 AI 辅助编写，当前维护者：BLacxDx。
+[Vercel find-skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills) already supports skill discovery and installation. This project focuses on requirement fit, evidence, runtime mismatches and small tested adaptations. It does not claim to invent skill search or outperform existing finders.
+
+There is no automatic installer, semantic ranking model, general security auditor or autonomous patch engine. The host assistant performs reasoning and authorized implementation. No funding or promotional eligibility is guaranteed.
+
+## Contribute
+
+Report the task, constraints, expected output and actual failure. For code changes, run the tests above. Keep new discovery sources read-only, bounded and explicit about missing evidence.
+
+MIT License. Maintained by BLacxDx; code and documentation are AI-assisted.

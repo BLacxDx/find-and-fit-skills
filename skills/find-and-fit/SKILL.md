@@ -27,6 +27,8 @@ Read the candidate's actual SKILL.md and relevant implementation/dependency inst
 
 For each hard requirement, record **supported / conflicts / unknown** with a source. Separate a README claim from an executed test. Check platform and runtime requirements, external services, API keys, recurring cost, license and archived status. Stars and recent commits are context, not compatibility or quality scores. An undetected license is unknown, not permission to redistribute. Check file-level terms before copying code.
 
+Before installing, match the registry package's repository URL and version to the inspected candidate; identical names on npm and PyPI can refer to unrelated tools. Check the execution path for external commands not listed in the README, especially when recommending a tool for Windows.
+
 Do not recommend a conflicting candidate as a direct fit. Mark an untested candidate as provisional. If all candidates conflict, explain the gap rather than inventing a match.
 
 ## Adapt only the gap

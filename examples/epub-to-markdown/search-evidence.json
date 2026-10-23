@@ -1,0 +1,105 @@
+{
+  "web_query": "EPUB to markdown offline command line open source github",
+  "repository_search": {
+    "query": "epub markdown in:name,description",
+    "total_count": 959,
+    "incomplete_results": false,
+    "candidates": [
+      {
+        "full_name": "uxiew/epub2MD",
+        "html_url": "https://github.com/uxiew/epub2MD",
+        "description": "convert epub file to markdown files",
+        "stargazers_count": 342,
+        "pushed_at": "2026-09-01T03:19:31Z",
+        "archived": false,
+        "license": {
+          "key": "mit",
+          "name": "MIT License",
+          "spdx_id": "MIT",
+          "url": "https://api.github.com/licenses/mit",
+          "node_id": "MDc6TGljZW5zZTEz"
+        },
+        "default_branch": "main"
+      },
+      {
+        "full_name": "elixir-lang/ex_doc",
+        "html_url": "https://github.com/elixir-lang/ex_doc",
+        "description": "ExDoc produces HTML, EPUB, and Markdown documentation for Erlang and Elixir projects",
+        "stargazers_count": 1621,
+        "pushed_at": "2026-10-21T04:13:44Z",
+        "archived": false,
+        "license": {
+          "key": "other",
+          "name": "Other",
+          "spdx_id": "NOASSERTION",
+          "url": null,
+          "node_id": "MDc6TGljZW5zZTA="
+        },
+        "default_branch": "main"
+      },
+      {
+        "full_name": "johnpaulada/pandoc-markdown-book-template",
+        "html_url": "https://github.com/johnpaulada/pandoc-markdown-book-template",
+        "description": "A template for creating epub books from markdown using pandoc.",
+        "stargazers_count": 275,
+        "pushed_at": "2019-07-13T20:47:22Z",
+        "archived": false,
+        "license": null,
+        "default_branch": "master"
+      },
+      {
+        "full_name": "firecrawl/anydoc",
+        "html_url": "https://github.com/firecrawl/anydoc",
+        "description": "Convert Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, and PDF to clean Markdown. Built in Rust, with Node.js and Python bindings.",
+        "stargazers_count": 23052,
+        "pushed_at": "2026-10-22T22:33:43Z",
+        "archived": false,
+        "license": {
+          "key": "mit",
+          "name": "MIT License",
+          "spdx_id": "MIT",
+          "url": "https://api.github.com/licenses/mit",
+          "node_id": "MDc6TGljZW5zZTEz"
+        },
+        "default_branch": "main"
+      },
+      {
+        "full_name": "overcuriousity/pdf2epub",
+        "html_url": "https://github.com/overcuriousity/pdf2epub",
+        "description": "Convert PDF files to nicely structured Markdown and EPUB format with intelligent layout detection using AI.",
+        "stargazers_count": 371,
+        "pushed_at": "2026-10-09T05:18:53Z",
+        "archived": false,
+        "license": {
+          "key": "mit",
+          "name": "MIT License",
+          "spdx_id": "MIT",
+          "url": "https://api.github.com/licenses/mit",
+          "node_id": "MDc6TGljZW5zZTEz"
+        },
+        "default_branch": "main"
+      }
+    ],
+    "checked_at": "2026-10-23T05:19:03.749379+00:00"
+  },
+  "inspected": [
+    {
+      "repository": "uxiew/epub2MD",
+      "commit": "f1a32a0cfc0213c7ede4fd79419b1dd4d08d26b4",
+      "license": "MIT",
+      "checked_at": "2026-10-23T05:19:27.865563+00:00"
+    },
+    {
+      "repository": "mefengl/epub2md",
+      "commit": "2ba7a821094c1d5060516eec4b898c4febad65ff",
+      "license": "MIT",
+      "checked_at": "2026-10-23T05:19:15.011413+00:00"
+    },
+    {
+      "repository": "danielcorsano/convertext",
+      "commit": "10ed05dd8605c8e423e73081b8dc9b6a9d79abdc",
+      "license": "MIT",
+      "checked_at": "2026-10-23T05:19:16.401132+00:00"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "source_sha256": "4f81245d31380ac1d6eafb9a321e3691369bc70985736ae4bccf849a4f784036",
+  "expected_chapters": 12,
+  "output_chapters": 12,
+  "status": "passed",
+  "chapters": [
+    {
+      "title": "CHAPTER I. Down the Rabbit-Hole",
+      "source_id": "item4",
+      "word_tokens": 2195,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER II. The Pool of Tears",
+      "source_id": "item5",
+      "word_tokens": 2188,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER III. A Caucus-Race and a Long Tale",
+      "source_id": "item6",
+      "word_tokens": 1741,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER IV. The Rabbit Sends in a Little Bill",
+      "source_id": "item7",
+      "word_tokens": 2740,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER V. Advice from a Caterpillar",
+      "source_id": "item8",
+      "word_tokens": 2245,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER VI. Pig and Pepper",
+      "source_id": "item9",
+      "word_tokens": 2672,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER VII. A Mad Tea-Party",
+      "source_id": "item10",
+      "word_tokens": 2387,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER VIII. The Queen’s Croquet-Ground",
+      "source_id": "item11",
+      "word_tokens": 2561,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER IX. The Mock Turtle’s Story",
+      "source_id": "item12",
+      "word_tokens": 2366,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER X. The Lobster Quadrille",
+      "source_id": "item13",
+      "word_tokens": 2103,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER XI. Who Stole the Tarts?",
+      "source_id": "item14",
+      "word_tokens": 1947,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    },
+    {
+      "title": "CHAPTER XII. Alice’s Evidence",
+      "source_id": "item15",
+      "word_tokens": 2191,
+      "word_sequence_matches": true,
+      "title_matches": true,
+      "spine_order_matches": true,
+      "navigation_absent": true
+    }
+  ],
+  "scope": "One external book; exact normalized word sequences, not punctuation/layout equivalence or A/B model evaluation."
+}
